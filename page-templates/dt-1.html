@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historic Aircraft – Historic Military Aircraft</title>
+  <link rel="stylesheet" href="/historic-planes/css/style.css" />
+  <script>
+function applyReadMore(element) {
+    const text = element.textContent.trim();
+    if (!text || text === 'Loading...' || text.split(' ').length <= 25) return;
+    
+    const words = text.split(' ');
+    const short = words.slice(0, 25).join(' ');
+    
+    element.innerHTML = short + '... <span id="readmore" style="color:#2c3e50;cursor:pointer;text-decoration:underline;font-weight:bold">read more</span>';
+    
+    element.querySelector('#readmore').onclick = function() {
+        element.innerHTML = text + ' <span id="readless" style="color:#2c3e50;cursor:pointer;text-decoration:underline;font-weight:bold">show less</span>';
+        element.querySelector('#readless').onclick = function() {
+            applyReadMore(element);
+        };
+    };
+}
+</script>
+  <script defer src="/historic-planes/js/bundle.js"></script>
+</head>
+<body class="aircraft-page">
+  <div id="menu-placeholder"></div>
+  
+  <header class="site-header">
+    <div class="header-content">
+      <h1 class="museum-title">Historic Military Aircraft</h1>
+      <div class="search-bar">
+        <input type="text" id="searchBox" placeholder="Search historic aircraft..." />
+        <button id="searchButton">🔍</button>
+        <div id="searchResults"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="aircraft-nav">
+    <a href="#" class="nav-prev prev-plane">← Previous Aircraft</a>
+    <a href="/historic-planes/" class="nav-gallery">✈️ Gallery Overview</a>
+    <a href="#" class="nav-next next-plane">Next Aircraft →</a>
+  </nav>
+
+  <main class="artwork-main">
+    <!-- Hero Section with Main Image and Basic Info -->
+    <section class="artwork-hero">
+      <div class="artwork-image-container">
+        <img src="/historic-planes/images/placeholder.jpg" alt="Loading Aircraft" class="plane-image lightbox-trigger" />
+        <div class="image-caption">
+          <span class="sku">Loading...</span>
+        </div>
+      </div>
+      
+      <div class="artwork-primary-info">
+        <header class="artwork-header">
+          <h1 class="plane-title">Loading...</h1>
+          <h2 class="subtitle">Loading...</h2>
+          <div class="artwork-meta-basic">
+            <span class="material">Loading...</span>
+          </div>
+        </header>
+        
+        <div class="artwork-description">
+          <p class="summary">Loading...</p>
+        </div>
+
+        <!-- Key Details Grid -->
+        <div class="details-grid">
+          <div class="detail-item">
+            <label>Squadron</label>
+            <span class="squadron">Loading...</span>
+          </div>
+          <div class="detail-item">
+            <label>Length</label>
+            <span class="height">Loading...</span>
+          </div>
+          <div class="detail-item">
+            <label>Wingspan</label>
+            <span class="wingspan">Loading...</span>
+          </div>
+          <div class="detail-item">
+            <label>Max Speed</label>
+            <span class="speed">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aircraft Specifications Section -->
+    <section class="aircraft-details">
+      <h3>Aircraft Specifications & History</h3>
+      <div class="aircraft-content">
+        <div class="specifications">
+          <h4>Technical Specifications</h4>
+          <div class="specs-grid">
+            <div class="spec-item">
+              <label>Engine</label>
+              <span class="engine">Loading...</span>
+            </div>
+            <div class="spec-item">
+              <label>Armament</label>
+              <span class="armament">Loading...</span>
+            </div>
+            <div class="spec-item">
+              <label>Material</label>
+              <span class="material">Loading...</span>
+            </div>
+            <div class="spec-item">
+              <label>Theater of Operations</label>
+              <span class="location">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <div class="historical-context">
+          <h4>Notable Facts</h4>
+          <p class="notable-fact">Loading...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tags and Categories -->
+    <section class="artwork-metadata">
+      <h3>Categories &amp; Classification</h3>
+      <div class="metadata-content">
+        <div class="tags-container">
+          <h4>Quick Filters</h4>
+          <ul class="tags-list">
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'fighters'); return true;" class="tag-link">Fighter Aircraft</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'bombers'); return true;" class="tag-link">Bomber Aircraft</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'jet-fighters'); return true;" class="tag-link">Jet Fighters</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'naval-fighters'); return true;" class="tag-link">Naval Fighters</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'WWII'); return true;" class="tag-link">World War II</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'USA'); return true;" class="tag-link">United States</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'UK'); return true;" class="tag-link">United Kingdom</a></li>
+            <li><a href="/historic-planes/" onclick="sessionStorage.setItem('autoFilter', 'Germany'); return true;" class="tag-link">Germany</a></li>
+          </ul>
+        </div>
+        
+        <div class="filters-container">
+          <h4>Aircraft Classification</h4>
+          <div class="filters-grid">
+            <div class="filter-item">
+              <label>Aircraft Type</label>
+              <span class="category-filter">Loading...</span>
+            </div>
+            <div class="filter-item">
+              <label>Country/Origin</label>
+              <span class="region-filter">Loading...</span>
+            </div>
+            <div class="filter-item">
+              <label>Historical Era</label>
+              <span class="era-filter">Loading...</span>
+            </div>
+            <div class="filter-item">
+              <label>Detailed Type</label>
+              <span class="style-filter">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Authentication Badge -->
+    <section class="provenance-section">
+      <h3>Historical Documentation</h3>
+      <div class="provenance-content">
+        <div class="authentication-badge">
+          <span class="verified-icon">✓</span>
+          <p>This aircraft representation is based on historical records and technical specifications from military archives.</p>
+        </div>
+        <div class="document-links">
+          <a href="/historic-planes/" class="archive-link">
+            📚 Explore More Aircraft
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expert Commentary -->
+    <section class="expert-commentary">
+      <div class="curator-profile">
+        <div class="profile-image">
+          <img src="/historic-planes/images/aviation-expert.jpg" alt="Aviation Expert Profile" />
+        </div>
+        <div class="profile-info">
+          <h4>Expert Commentary</h4>
+          <h5>Colonel James "Hawk" Mitchell (Ret.)</h5>
+          <p class="title">Senior Aviation Historian & Former Fighter Pilot</p>
+          <p class="commentary">"Each aircraft in our collection represents not just technological achievement, but the courage and sacrifice of the men and women who flew these remarkable machines into history."</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-branding">
+        <h2>Historic Military Aircraft</h2>
+        <p>Preserving aviation heritage and honoring those who served</p>
+      </div>
+      <div class="footer-links">
+        <a href="/historic-planes/">Gallery</a>
+        <a href="#">About</a>
+        <a href="#">Collections</a>
+        <a href="#">Research</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Historic Military Aircraft. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox for Image Viewing -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">×</span>
+    <div class="lightbox-content">
+      <img src="" alt="Lightbox Image" class="lightbox-image" />
+      <div class="lightbox-info">
+        <h3 class="lightbox-title">Aircraft Title</h3>
+        <p class="lightbox-details">Aircraft Details</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  
+  .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-bar input {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-bar button {
+  padding: 0.75rem;
+  border: none;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.search-bar button:hover {
+  transform: scale(1.05);
+}
+  .tags-list li {
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	background: #2c3e50;
+	color: white;
+	padding: 0.25rem 0.75rem;
+	border-radius: 20px;
+	font-size: 0.85rem;
+}
+  
+  .tag-link, .filter-link {
+	color: #fff;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+  
+    /* Enhanced Professional Styling for Historic Military Aircraft */
+    .aircraft-page {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fafafa;
+    }
+
+    .site-header {
+ background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: white;
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .museum-title {
+      font-size: 2rem;
+      font-weight: 300;
+      color: #fff;
+      display: block;
+      margin: 0;
+      margin-left: 0px;
+      width: 300px;
+      margin-left: 50px;
+    }
+
+    .aircraft-nav {
+      background: white;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+    }
+
+    .aircraft-nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #2c3e50;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .aircraft-nav a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .artwork-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .artwork-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .plane-image {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .plane-image:hover {
+      transform: scale(1.02);
+    }
+
+    .plane-title {
+      font-size: 1.3rem;
+      margin: 0 0 0.5rem 0;
+      color: #2c3e50;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      font-style: italic;
+      margin: 0 0 1rem 0;
+    }
+
+    .artwork-meta-basic {
+      color: #888;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .summary {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #444;
+      text-align: justify;
+      margin: 1.5rem 0;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-item label {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .aircraft-details,
+    .artwork-metadata,
+    .provenance-section {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .aircraft-details h3,
+    .artwork-metadata h3,
+    .provenance-section h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .aircraft-details h4 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .spec-item label {
+      font-weight: bold;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .notable-fact {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .filter-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-item label {
+      font-weight: bold;
+      color: #666;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .filter-item a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .filter-item a:hover {
+      text-decoration: underline;
+    }
+
+    .authentication-badge {
+      background: #e8f5e8;
+      border: 1px solid #4caf50;
+      border-radius: 4px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .verified-icon {
+      background: #4caf50;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .document-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .document-links .archive-link {
+      background: #2c3e50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .document-links .archive-link:hover {
+      background: #3498db;
+    }
+
+    .expert-commentary {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .curator-profile {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .profile-image img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-info h4 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-info h5 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .profile-info .title {
+      color: #666;
+      font-style: italic;
+      margin: 0.25rem 0 1rem 0;
+    }
+
+    .commentary {
+      font-style: italic;
+      border-left: 3px solid #2c3e50;
+      padding-left: 1rem;
+      margin: 0;
+    }
+
+    .site-footer {
+      background: #333;
+      color: white;
+      padding: 2rem 0 1rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid #555;
+      margin-top: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .artwork-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .details-grid,
+      .filters-grid,
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .curator-profile {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .document-links {
+        flex-direction: column;
+      }
+      
+      .aircraft-nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+
+    /* Lightbox Enhancements */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .lightbox.active {
+      display: block;
+    }
+
+    .lightbox-content {
+      position: relative;
+      margin: 2% auto;
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .lightbox-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      max-height: 90vh;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+
+    @media (max-width: 480px) {
+      .museum-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</body>
+</html>
